@@ -7,23 +7,20 @@ const User = require('../models/user');
 const customFields = {
 	usernameField: 'email',
 	passwordField: 'password',
-	passReqToCallback: true,
 };
 
 passport.use(new LocalStratergy(customFields, verifyUser));
 
-async function verifyUser(req, username, password, cb) {
+async function verifyUser(username, password, cb) {
 	try {
 		const user = await User.findOne({ email: username });
 
 		if (!user) {
-			req.flash = { msg: 'No user with that email' };
-			cb(null, false);
+			cb(null, false, { errorMsg: 'No user with that email' });
 		} else if (validatePassword(password, user.salt, user.hash)) {
 			cb(null, user);
 		} else {
-			req.flash = { msg: 'Incorrect Password!!' };
-			cb(null, false);
+			cb(null, false, { errorMsg: 'Incorrect Password!!' });
 		}
 	} catch (err) {
 		cb(err);
@@ -33,7 +30,7 @@ async function verifyUser(req, username, password, cb) {
 passport.serializeUser((user, cb) => cb(null, user.id));
 passport.deserializeUser((id, cb) => {
 	User.findById(id)
-		.then(user => cb(user))
+		.then(user => cb(null, user))
 		.catch(cb);
 });
 
