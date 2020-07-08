@@ -6,7 +6,7 @@ const { genHashedPassword } = require('../lib/passwordUtils');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-	res.send('This is the index page');
+	res.render('../views/index.ejs');
 });
 
 router.get('/login', checkNotAuthenticated, (req, res) => {
