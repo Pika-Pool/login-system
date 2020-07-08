@@ -7,7 +7,7 @@ function checkAuthenticated(req, res, next) {
 	if (req.isAuthenticated()) {
 		return next();
 	}
-	res.send('is not authenticated');
+	res.redirect('/login');
 }
 
 function nocache(req, res, next) {

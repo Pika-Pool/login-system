@@ -27,7 +27,6 @@ router.post('/login', checkNotAuthenticated, (req, res, next) => {
 			if (err) {
 				return next(err);
 			}
-			console.log(`Inside login POST - login successful - ${user}`);
 			return res.redirect(`/users/${user.id}`);
 		});
 	})(req, res, next);
@@ -49,10 +48,11 @@ router.post('/register', checkNotAuthenticated, (req, res) => {
 
 	newUser
 		.save()
-		.then(user => console.log(`Inside register POST - ${user}`))
-		.catch(err => console.error(`Inside register POST - ${err}`));
-
-	return res.redirect('/login');
+		.then(() => res.redirect('/login'))
+		.catch(err => {
+			console.error(`Inside register POST - ${err}`);
+			res.redirect('/register');
+		});
 });
 
 router.post('/logout', (req, res) => {
@@ -61,7 +61,7 @@ router.post('/logout', (req, res) => {
 });
 
 function checkNotAuthenticated(req, res, next) {
-	if(req.isAuthenticated()) {
+	if (req.isAuthenticated()) {
 		return res.redirect(`/users/${req.user.id}`);
 	}
 
