@@ -10,7 +10,14 @@ function checkAuthenticated(req, res, next) {
 	res.send('is not authenticated');
 }
 
-router.get('/:id', checkAuthenticated, (req, res) => {
+function nocache(req, res, next) {
+	res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+	res.header('Expires', '-1');
+	res.header('Pragma', 'no-cache');
+	next();
+}
+
+router.get('/:id', checkAuthenticated, nocache, (req, res) => {
 	User.findById(req.params.id)
 		.then(user => {
 			if (!user) return res.redirect('/login');
