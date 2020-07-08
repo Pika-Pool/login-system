@@ -55,6 +55,11 @@ router.post('/register', checkNotAuthenticated, (req, res) => {
 	return res.redirect('/login');
 });
 
+router.post('/logout', (req, res) => {
+	req.logOut();
+	res.redirect('/');
+});
+
 function checkNotAuthenticated(req, res, next) {
 	if(req.isAuthenticated()) {
 		return res.redirect(`/users/${req.user.id}`);

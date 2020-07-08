@@ -1,0 +1,17 @@
+<header>
+	<nav>
+		<a href="/" class="brand">Login System</a>
+		<ul>
+			<% if(locals.isLoggedIn) { %>
+				<li>
+					<form action="/logout" method="post">
+						<button type="submit">Logout</button>
+					</form>
+				</li>
+			<% } else { %>
+				<li><a href="/login">Login</a></li>
+				<li><a href="/register">Register</a></li>
+			<% } %>
+		</ul>
+	</nav>
+</header>

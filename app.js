@@ -34,6 +34,9 @@ require('./config/passport');
 app.use(passport.initialize());
 app.use(passport.session());
 
+// store isLoggedIn boolean variable in res.local
+app.use(require('./lib/isLoggedIn'));
+
 // routes
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
