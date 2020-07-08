@@ -1,14 +1,14 @@
 process.env.NODE_ENV !== 'production' ? require('dotenv').config() : void 0;
 
 const express = require('express');
-const mongoose = require('mongoose');
+const dbConnection = require('./config/database.js');
 
+const User = require('./models/user');
 
 const app = express();
 
-app.get('/', (req, res) => {
-	res.send('This is the index page');
-});
+const indexRouter = require('./routes/index');
+app.use('/', indexRouter);
 
 app.listen(process.env.PORT || 3000, () => {
 	console.log(`Server listening on port ${process.env.PORT || 3000}`);
