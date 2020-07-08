@@ -4,6 +4,7 @@ const express = require('express');
 const dbConnection = require('./config/database.js');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+const passport = require('passport');
 
 const app = express();
 
@@ -25,13 +26,16 @@ app.use(
 	})
 );
 
-const passport = require('./config/passport');
+require('./config/passport');
 app.use(passport.initialize());
 app.use(passport.session());
 
 // routes
 const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+
 app.use('/', indexRouter);
+app.use('/users', usersRouter);
 
 app.listen(process.env.PORT || 3000, () => {
 	console.log(`Server listening on port ${process.env.PORT || 3000}`);
