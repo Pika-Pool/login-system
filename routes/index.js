@@ -9,11 +9,11 @@ router.get('/', (req, res) => {
 	res.send('This is the index page');
 });
 
-router.get('/login', (req, res) => {
+router.get('/login', checkNotAuthenticated, (req, res) => {
 	res.render('../views/login.ejs');
 });
 
-router.post('/login', (req, res, next) => {
+router.post('/login', checkNotAuthenticated, (req, res, next) => {
 	passport.authenticate('local', (err, user, info) => {
 		if (err) return next(err);
 
@@ -33,11 +33,11 @@ router.post('/login', (req, res, next) => {
 	})(req, res, next);
 });
 
-router.get('/register', (req, res) => {
+router.get('/register', checkNotAuthenticated, (req, res) => {
 	res.render('../views/register.ejs');
 });
 
-router.post('/register', (req, res) => {
+router.post('/register', checkNotAuthenticated, (req, res) => {
 	const { salt, hash } = genHashedPassword(req.body.password);
 
 	const newUser = new User({
@@ -54,5 +54,13 @@ router.post('/register', (req, res) => {
 
 	return res.redirect('/login');
 });
+
+function checkNotAuthenticated(req, res, next) {
+	if(req.isAuthenticated()) {
+		return res.redirect(`/users/${req.user.id}`);
+	}
+
+	next();
+}
 
 module.exports = router;
