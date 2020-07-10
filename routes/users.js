@@ -21,7 +21,7 @@ router.get('/:id', checkAuthenticated, nocache, (req, res) => {
 	User.findById(req.params.id)
 		.then(user => {
 			if (!user) return res.redirect('/login');
-			res.render('../views/users/index.ejs', { user });
+			res.render('users/index.ejs', { user });
 		})
 		.catch(err => {
 			console.error(err);
