@@ -57,18 +57,44 @@ header {
 	font-weight: bold;
 }
 
-a.nav-link {
+.navbar .nav {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.nav-link {
 	padding: 0.8rem 1rem;
 	color: var(--color-text-primary);
 	text-transform: uppercase;
 	font-size: 0.9em;
 }
 
-a.nav-link:not(:last-child) {
+.nav-link:not(:last-child) {
 	margin-right: 1rem;
 }
 
-a.nav-link:hover {
+button.nav-link {
+	border: none;
+	outline: none;
+	background-color: transparent;
+	color: var(--color-text-danger);
+	border: 2px solid transparent;
+	border-radius: 2rem;
+
+	font-weight: bold;
+	cursor: pointer;
+
+	transition: border 0.1s ease;
+}
+
+button.nav-link:hover {
+	border-color: var(--color-text-danger);
+	color: var(--color-background-nav);
+	background-color: var(--color-text-danger);
+}
+
+.nav-link:hover {
 	color: var(--color-text-secondary);
 }
 

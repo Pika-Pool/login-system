@@ -3,6 +3,7 @@
 		<a href="/" class="nav-brand">LoginApp</a>
 		<div class="nav">
 			<% if(locals.isLoggedIn) { %>
+				<a href="/login" class="nav-link">DashBoard</a>
 				<form action="/logout" method="post">
 					<button class="nav-link btn-danger" type="submit">Logout</button>
 				</form>
