@@ -1,5 +1,6 @@
 @import './shared/variables.css';
 @import '../fonts/fonts.css';
+@import './shared/form.css';
 
 :root {
 	--header-height: 4.8rem;

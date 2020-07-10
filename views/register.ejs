@@ -1,20 +1,46 @@
-<form action="/register" method="post">
-	<section>
-		<label for="name">Name:</label>
-		<input type="text" name="name" id="name">
-	</section>
+<div class="form-container">
+	<h2>Sign Up</h2>
+	<p>Already have an account? <a href="/login" class="cta">Login Here</a></p>
 
-	<section>
-		<label for="email">Email:</label>
-		<input type="email" name="email" id="email">
-	</section>
-
-	<section>
-		<label for="password">Password:</label>
-		<input type="text" name="password" id="password">
-	</section>
-
-	<button type="submit">Register</button>
-
-	<%- include('./partials/errorMessage.ejs') %>
-</form>
+	<form class="form" action="/register" method="post">
+		<section class="input-block">
+			<label for="name">Name:</label>
+			<input
+				type="text"
+				name="name"
+				id="name"
+				placeholder="Type your name here..."
+				autofocus
+				required
+			>
+		</section>
+	
+		<section class="input-block">
+			<label for="email">Email:</label>
+			<input 
+				type="email"
+				name="email"
+				id="email"
+				placeholder="Type your email here..."
+				autofocus
+				required
+			>
+		</section>
+	
+		<section class="input-block">
+			<label for="password">Password:</label>
+			<input 
+				type="password"
+				name="password"
+				id="password"
+				placeholder="Type your password here..."
+				autofocus
+				required
+			>
+		</section>
+	
+		<button class="form-btn" type="submit">Sign Up</button>
+	
+		<%- include('./partials/errorMessage.ejs') %>
+	</form>
+</div>
