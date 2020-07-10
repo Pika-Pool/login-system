@@ -1,15 +1,20 @@
-<form action="/login" method="post">
-	<section>
-		<label for="email">Email:</label>
-		<input type="email" name="email" id="email">
-	</section>
+<div class="form-container">
+	<h2>Log In</h2>
+	<p>New to Login? <a class="cta" href="/register">Sign Up for free</a></p>
 
-	<section>
-		<label for="password">Password:</label>
-		<input type="text" name="password" id="password">
-	</section>
-
-	<button type="submit">Login</button>
-
-	<%- include('./partials/errorMessage.ejs') %>
-</form>
+	<form class="form" action="/login" method="post">
+		<section class="input-block">
+			<label for="email">Email:</label>
+			<input autofocus type="email" name="email" id="email" required placeholder="Type your email address">
+		</section>
+	
+		<section class="input-block">
+			<label for="password">Password:</label>
+			<input type="password" name="password" id="password" required placeholder="Type your password">
+		</section>
+	
+		<button class="form-btn" type="submit">Login</button>
+	
+		<%- include('./partials/errorMessage.ejs') %>
+	</form>
+</div>
