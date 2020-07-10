@@ -6,11 +6,11 @@ const { genHashedPassword } = require('../lib/passwordUtils');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-	res.render('../views/index.ejs');
+	res.render('index.ejs');
 });
 
 router.get('/login', checkNotAuthenticated, (req, res) => {
-	res.render('../views/login.ejs');
+	res.render('login.ejs');
 });
 
 router.post('/login', checkNotAuthenticated, (req, res, next) => {
@@ -18,7 +18,7 @@ router.post('/login', checkNotAuthenticated, (req, res, next) => {
 		if (err) return next(err);
 
 		if (info && info.errorMsg) {
-			return res.render('../views/login.ejs', {
+			return res.render('login.ejs', {
 				errorMessage: info.errorMsg,
 			});
 		}
@@ -33,7 +33,7 @@ router.post('/login', checkNotAuthenticated, (req, res, next) => {
 });
 
 router.get('/register', checkNotAuthenticated, (req, res) => {
-	res.render('../views/register.ejs');
+	res.render('register.ejs');
 });
 
 router.post('/register', checkNotAuthenticated, (req, res) => {
