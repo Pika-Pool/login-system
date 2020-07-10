@@ -1,4 +1,5 @@
 # login-system
+## A login app
 ### run application:
 - clone the repo,
 - In your terminal, run the following commands
@@ -7,7 +8,7 @@ $ cd login-system
 $ npm install
 $ npm start
 ```
-and open http://localhost:3000/ in your browser
+- open http://localhost:3000/ in your browser
 
 ### run as developer:
 - clone repo
@@ -15,5 +16,7 @@ and open http://localhost:3000/ in your browser
 ```sh
 $ cd login-system
 $ npm install
+$ npm install nodemon -D
 $ npm run dev
 ```
+- open http://localhost:3000/ in your browser
