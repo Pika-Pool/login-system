@@ -26,7 +26,7 @@ app.use(
 		saveUninitialized: true,
 		store: new MongoStore({ mongooseConnection: dbConnection }),
 		cookie: {
-			maxAge: 1000 * 30,
+			maxAge: 1000 * 60 * 60 * 24,	// equals a day
 		},
 	})
 );
