@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'Ionicons';
+    src: url('Ionicons.woff2') format('woff2'),
+        url('Ionicons.woff') format('woff'),
+        url('Ionicons.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+

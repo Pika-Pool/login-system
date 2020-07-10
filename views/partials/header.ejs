@@ -1,17 +1,15 @@
 <header>
-	<nav>
-		<a href="/" class="brand">Login System</a>
-		<ul>
+	<nav class="navbar">
+		<a href="/" class="nav-brand">LoginApp</a>
+		<div class="nav">
 			<% if(locals.isLoggedIn) { %>
-				<li>
-					<form action="/logout" method="post">
-						<button type="submit">Logout</button>
-					</form>
-				</li>
+				<form action="/logout" method="post">
+					<button class="nav-link btn-danger" type="submit">Logout</button>
+				</form>
 			<% } else { %>
-				<li><a href="/login">Login</a></li>
-				<li><a href="/register">Register</a></li>
+				<a class="nav-link" href="/login">Log in</a>
+				<a class="nav-link cta" href="/register">Sign Up for free</a>
 			<% } %>
-		</ul>
+		</div>
 	</nav>
 </header>

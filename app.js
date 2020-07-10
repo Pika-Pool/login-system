@@ -16,6 +16,7 @@ app.set('layout', 'layouts/layout');
 
 app.use(expressLayouts);
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static('./public'));
 
 // sessions and authentication
 app.use(

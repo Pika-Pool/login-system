@@ -1,0 +1,7 @@
+:root {
+	--color-background-primary: hsl(176, 42%, 69%);
+	--color-background-nav: hsl(176, 100%, 100%);
+
+	--color-text-primary: #5b6276;
+	--color-text-secondary: hsl(24, 90%, 61%);
+}
